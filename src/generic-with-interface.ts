@@ -62,4 +62,11 @@
             capacity: "120cc",
         }
     }
+
+    // default type
+    interface IDefaultGeneric<T, X = null> {
+        name: string;
+        smartWatch: T;
+        bike?: X
+    }
 }
