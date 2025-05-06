@@ -302,3 +302,19 @@ interface IAdd {
     (num1: number, num2: number): number;
 }
 ```
+
+### Generic in TS
+- Dynamically allocate type
+- Must use angle bracket ```<>``` to declare or pass type
+```ts
+type TGenericArray<T> = Array<T>; // Dynamic type array using generic
+const mentors: TGenericArray<string> = ['Mr. X', 'Mr. Y', 'Mr. Z'];
+const isAdmins: TGenericArray<boolean> = [true, false, true];
+const users: TGenericArray<{ name: string, roll: number }> = [
+    { name: "Mr. X", roll: 5, }, { name: "Mr. Y", roll: 10  },
+];
+
+type TGenericTuple<X, Y> = [X, Y]; // Dynamic type tuple using generic
+const user2: TGenericTuple<string, string> = ['Mr. X', 'Mrs. Y'];
+const userWithID: TGenericTuple<number, { name: string, email: string }> = [1221, { name: 'Mr. Z', email: 'zzz@ghumbabu.com' }];
+```
