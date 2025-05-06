@@ -318,3 +318,49 @@ type TGenericTuple<X, Y> = [X, Y]; // Dynamic type tuple using generic
 const user2: TGenericTuple<string, string> = ['Mr. X', 'Mrs. Y'];
 const userWithID: TGenericTuple<number, { name: string, email: string }> = [1221, { name: 'Mr. Z', email: 'zzz@ghumbabu.com' }];
 ```
+- Generic With Interface
+```ts
+interface IDeveloper<T> {
+    name: string;
+    smartWatch: T;
+}
+
+type TLabTopWatch = {
+    brand: string;
+    model: string;
+    display: string;
+};
+interface TAppleWatch {
+    brand: string;
+    model: string;
+    releaseYear?: number;
+    display: string;
+    features: string[];
+};
+
+const noobDeveloper: IDeveloper<TLabTopWatch> = {
+    name: "Nur",
+    smartWatch: {
+        brand: "LabTop",
+        model: "LT2022",
+        display: "OLED",
+    }
+};
+const richDeveloper: IDeveloper<TAppleWatch> = {
+    name: "Hassan",
+    smartWatch: {
+        brand: "Apple",
+        model: "Apple Watch 2025",
+        display: "Amulade",
+        features: ["Sleep Track", "Heart Track", "Weather Update"]
+    }
+}
+```
+- Default type in generic
+```ts
+interface IDefaultGeneric<T, X = null> {
+     name: string;
+    smartWatch: T;
+    bike?: X
+}
+```
