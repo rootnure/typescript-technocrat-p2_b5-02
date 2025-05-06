@@ -263,3 +263,42 @@ const kgToGm = (value: string | number): string | number | undefined => {
     // do something...
 }
 ```
+
+### Interface
+- Only usable for object type value
+```ts
+interface IUser { // type alias using interface
+    name: string;
+    age: number;
+}
+```
+- ```extents``` keyword is used to add (extend) new property
+```ts
+interface IUserWithRole extends IUser {
+    role: string;
+}
+```
+- Both ```interface``` and ```type``` can be extended by each other
+```ts
+type TUser = {
+    name: string;
+    age: number;
+};
+interface IUserWithRole extends TUser { // extend type using interface
+    role: string;
+}
+```
+- Array type using interface
+```ts
+// type TRoll = number[];
+interface IRoll {
+    [index: number]: number
+}
+```
+- Function type using interface
+```ts
+// type TAdd = (num1: number, num2: number) => number;
+interface IAdd {
+    (num1: number, num2: number): number;
+}
+```

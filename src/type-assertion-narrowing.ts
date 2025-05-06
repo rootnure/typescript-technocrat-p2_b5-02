@@ -5,7 +5,7 @@
     variable = "Web Development";
     console.log((variable as string).length);
 
-    const kgToGm = (value: string | number): string | number | undefined => {
+    const kgToGm = (value: string | number): string | number | undefined => { // Type narrowing
         if (typeof value === 'number') {
             return value * 1000;
         } else if (typeof value === 'string') {
