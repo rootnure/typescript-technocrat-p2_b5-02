@@ -1,6 +1,7 @@
 # Typescript Technocrad 01
 
 ## Basic Data Types in TS
+
 ### Primitive types: string, number, boolean, undefined, null
 ```ts
 let firstName : string = 'Nure Alom'; // string
@@ -243,3 +244,22 @@ const throwError = (msg: string): never => {
 ```
 
 ## Explore Advanced Types of TS
+
+### Type Assertion
+- Better understanding of type than typescript
+- ```as``` keyword us used for type assertion
+```ts
+console.log((variable as string).length);
+const result1 = kgToGm(1) as number;
+const result2 = kgToGm('1 KG') as string;
+```
+
+### Type Narrowing
+- To be more precise about the type of a value within a specific block of code is type narrowing
+```ts
+// type narrowed to string | number for parameter value
+// for return type narrowed to string | number | undefined
+const kgToGm = (value: string | number): string | number | undefined => {
+    // do something...
+}
+```
