@@ -390,3 +390,14 @@ const addCourseToStudent = <T>(student: T) => {
 
 const student1 = addCourseToStudent<{ name: string; email: string; devType: string }>({ name: "Mr. X", email: "mr.x@mail.com", devType: "NLWD" });
 ```
+
+### Constraints in TS
+```ts
+const addCourseToStudent = <
+                // these properties must be present
+    T extends { id: number; name: string; email: string; }
+    >(student: T) => {
+        const course = "Web Development";
+        return { ...student, course }
+}
+```
