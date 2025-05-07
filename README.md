@@ -401,3 +401,17 @@ const addCourseToStudent = <
         return { ...student, course }
 }
 ```
+
+### Constraint using ```keyof```
+- Creating a new type using key of object or object type
+```ts
+type Vehicle = { bike: string; car: string; ship: string; }
+type TOwner = keyof Vehicle; // Same as --> type TOwner = "bike" | "car" | "ship";
+const gerPropertyValue = <X, Y extends keyof X>(obj: X, key: Y) => {
+    return obj[key];
+}
+const user = { name: "Mr. ABC", age: 20, email: "abc@mail.co.bm" };
+const car = { model: "Toyota 2000", price: 20000 };
+const result1 = gerPropertyValue(user, "email");
+const result2 = gerPropertyValue(car, "model");
+```
