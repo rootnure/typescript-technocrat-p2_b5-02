@@ -432,3 +432,15 @@ const showData = async (): Promise<TData> => {
     console.log(data);
 }
 ```
+
+### Conditional Types
+- Simple Conditional Type
+```ts
+type T1 = number;
+type TConditional1 = T1 extends null ? true : false; // Conditional Type
+```
+- Usually used Conditional Type
+```ts
+type TCheckVehicle<T> = T extends "bike" | "car" | "ship" ? true : false;
+type THasBike = TCheckVehicle<"bike">; // true
+```
