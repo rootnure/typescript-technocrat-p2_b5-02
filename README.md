@@ -475,3 +475,79 @@ const area: TAreaGenericMapped<{ height: string; width: number; }> = {
     width: 50
 }
 ```
+
+### Utility Types
+- Pick --> Pick specific property with type
+```ts
+type TPerson = {
+    name: string;
+    age: number;
+    contact: string;
+}
+type TName = Pick<TPerson, "name">; // { name: string; }
+type TNameAge = Pick<TPerson, "name" | "age">; // { name: string; age: number; }
+```
+- Omit --> Pick all property with type except specific property
+```ts
+type TPerson = {
+    name: string;
+    age: number;
+    contact?: string;
+}
+type TPersonWithoutAge = Omit<TPerson, "age">; // { name: string; contact?: string; }
+type TPersonContact = Omit<TPerson, "name" | "age">; // { contact?: string; }
+```
+- Required --> Update all property as required
+```ts
+type TPerson = {
+    name: string;
+    age: number;
+    contact?: string;
+}
+type TPersonRequired = Required<TPerson>; // { name: string; age: number; contact: string; }
+```
+- Partial --> Update all property as optional
+```ts
+type TPerson = {
+    name: string;
+    age: number;
+    contact?: string;
+}
+type TPersonPartial = Partial<TPerson>; // { name?: string; age?: number; contact?: string }
+```
+- Readonly --> Access Modifier --> Access to read only
+```ts
+const person: TPerson = {
+    name: "Mr. XYZ",
+    age: 25,
+    contactNo: "134235",
+}
+person.age++; // ✅ changeable for "TPerson" type alias
+
+type TPersonReadOnly = Readonly<TPerson>; // this will modify the property to readonly
+const person2: TPersonReadOnly = {
+    name: "Mr. XYZ",
+    age: 25,
+    contactNo: "134235",
+}
+// person2.age++; // ❌ can not change for "TPersonReadOnly" type alias
+```
+- Record --> Allow to add similar patterned property
+```ts
+type TMyObj = Record<string, string>; // Allow to add as many property as we want in similar pattern
+const obj1: TMyObj = {
+    a: "aa",
+    b: "bb",
+    c: "cc"
+    // ...
+}
+
+const emptyObj: Record<string, unknown> = {}; // This type will be used frequently in future
+emptyObj.name = "Mr. MNO";
+emptyObj.age = 22;
+emptyObj.isValidUser = false;
+emptyObj.address = {
+    city: "dhk", street: '22/A', postalCode: 1000,
+}
+// ...
+```
