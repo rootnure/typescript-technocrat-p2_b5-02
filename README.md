@@ -415,3 +415,20 @@ const car = { model: "Toyota 2000", price: 20000 };
 const result1 = gerPropertyValue(user, "email");
 const result2 = gerPropertyValue(car, "model");
 ```
+
+### Asynchronous TS
+```ts
+type TData = { msg: string; };
+const createPromise = (): Promise<TData> => {
+    return new Promise<TData>((resolve, reject) => {
+        const data: boolean = true;
+        if (data) resolve({ msg: "promise resolve hoichey vai" });
+        else reject("Data Dite Hari No...");
+    });
+}
+// calling custom promise
+const showData = async (): Promise<TData> => {
+    const data: TData = await createPromise();
+    console.log(data);
+}
+```
