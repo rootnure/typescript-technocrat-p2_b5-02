@@ -364,3 +364,29 @@ interface IDefaultGeneric<T, X = null> {
     bike?: X
 }
 ```
+### Function with Generic
+- Array using Function with Generic
+```ts
+const createArrayWithGeneric = <T>(param: T): T => {
+    return [param];
+}
+createArrayWithGeneric<string>("Mr. Y");
+```
+- Tuple using Function with Generic
+```ts
+const createTupleWithGeneric = <T, Q>(param1: T, param2: Q): [T, Q] => {
+    return [param1, param2];
+}
+createTupleWithGeneric<string, boolean>("Mr. X", true);
+interface IUser { id: string; name: string };
+createTupleWithGeneric<IUser, boolean>({ id: 983, name: "Mr.X" }, true);
+```
+- Object using Function with Generic
+```ts
+const addCourseToStudent = <T>(student: T) => {
+    const course = "Web Development";
+    return { ...student, course }
+}
+
+const student1 = addCourseToStudent<{ name: string; email: string; devType: string }>({ name: "Mr. X", email: "mr.x@mail.com", devType: "NLWD" });
+```
