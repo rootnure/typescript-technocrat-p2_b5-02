@@ -444,3 +444,34 @@ type TConditional1 = T1 extends null ? true : false; // Conditional Type
 type TCheckVehicle<T> = T extends "bike" | "car" | "ship" ? true : false;
 type THasBike = TCheckVehicle<"bike">; // true
 ```
+
+### Mapped Types
+- Look Up Type
+```ts
+type TArea = {
+    height: number;
+    width: number;
+}
+type THeight = TArea["height"]; // Give the type or "height" from "TArea"
+```
+- Mapping
+```ts
+// With Normal Type Alias
+type TAreaString = {
+    height: number;
+    width: number;
+}
+type TAreaStringMapped = {
+    // [key in "height" | "width" ]: string;
+    [key in keyof TAreaNumber]: string;
+}
+
+// With Generic
+type TAreaGenericMapped<T> = {
+    [key in keyof T]: T[key]; // T = { height: string; width: number; } // key = T["height"]
+}
+const area: TAreaGenericMapped<{ height: string; width: number; }> = {
+    height: "100",
+    width: 50
+}
+```
